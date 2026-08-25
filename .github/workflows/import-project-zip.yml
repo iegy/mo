@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   import:
@@ -53,3 +54,19 @@ jobs:
           fi
           git commit -m 'Import MO Chapter 01 production project'
           git push origin main
+
+      - name: Start GitHub Pages production deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for i in {1..10}; do
+            if gh workflow run deploy-pages.yml --repo "${{ github.repository }}" --ref main; then
+              echo 'Deployment workflow started.'
+              exit 0
+            fi
+            sleep 3
+          done
+          echo 'Project imported successfully, but deployment dispatch could not be started automatically.'
+          echo 'Run deploy-pages.yml manually from the Actions tab.'
