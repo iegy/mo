@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'MO_CHAPTER_01_COMPLETE_v1.zip'
+      - '.github/workflows/import-project-zip.yml'
   workflow_dispatch:
 
 permissions:
@@ -37,7 +38,8 @@ jobs:
           rsync -a --delete "$SRC/" ./ \
             --exclude '.git/' \
             --exclude 'MO_CHAPTER_01_COMPLETE_v1.zip' \
-            --exclude '.github/workflows/import-project-zip.yml'
+            --exclude '.github/workflows/import-project-zip.yml' \
+            --exclude '.github/workflows/deploy-pages.yml'
           rm -f "$ZIP"
           rm -f .github/workflows/import-project-zip.yml
 
@@ -54,19 +56,3 @@ jobs:
           fi
           git commit -m 'Import MO Chapter 01 production project'
           git push origin main
-
-      - name: Start GitHub Pages production deployment
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          for i in {1..10}; do
-            if gh workflow run deploy-pages.yml --repo "${{ github.repository }}" --ref main; then
-              echo 'Deployment workflow started.'
-              exit 0
-            fi
-            sleep 3
-          done
-          echo 'Project imported successfully, but deployment dispatch could not be started automatically.'
-          echo 'Run deploy-pages.yml manually from the Actions tab.'
