@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MO — Beyond the Frame">
+  <rect width="64" height="64" rx="14" fill="#172026"/>
+  <path d="M15 16h28v7H22v25h25V35h7v20H15z" fill="#f3ead7"/>
+  <path d="M43 9h12v12h-7v-5h-5z" fill="#ef7b2d"/>
+  <circle cx="36" cy="35" r="5" fill="#ef7b2d"/>
+  <path d="M27 44v-18h5l4 7 4-7h5v7h-5v-1l-4 7-4-7v12z" fill="#f3ead7"/>
+</svg>

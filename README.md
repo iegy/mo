@@ -88,6 +88,7 @@ npx serve out
 - `ASSET_INVENTORY.md` — قائمة الأصول وأدوارها.
 - `TEST_REPORT.md` — تقرير التحقق النهائي.
 - `IMPLEMENTATION_DECISIONS.md` — القرارات التنفيذية المحدودة.
+- `source_assets/scenes/` — النسخ الأصلية غير المضغوطة لخلفيات المشاهد.
 - `canon/` — حزمة الـCanon الرسمية التي بُني عليها الإصدار.
 
 ## Rights
